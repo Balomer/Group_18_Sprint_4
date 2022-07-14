@@ -1,3 +1,4 @@
+@Regression
 Feature: As a user, I should be able to upload files and pictures as messages.
 
   Acceptance Criterias:
@@ -14,7 +15,7 @@ Feature: As a user, I should be able to upload files and pictures as messages.
     Supported file formats .pdf, .txt, .jpeg, .gif, .png, .docx
 
   Background: User should login with valid credentials and be on the homepage.
-    Given User should be on the homepage
+    Given User is on the homepage
 
   Scenario:
 
