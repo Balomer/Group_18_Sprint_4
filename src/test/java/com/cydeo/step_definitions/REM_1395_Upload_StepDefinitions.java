@@ -9,7 +9,7 @@ import org.junit.Assert;
 
 public class REM_1395_Upload_StepDefinitions {
 
-        @Given("User should be on the homepage")
+        @Given("User is on the homepage")
         public void userShouldBeOnTheHomepage() {
             LoginPage page=new LoginPage();
             Driver.getDriver().get(ConfigurationReader.getProperty("url"));
