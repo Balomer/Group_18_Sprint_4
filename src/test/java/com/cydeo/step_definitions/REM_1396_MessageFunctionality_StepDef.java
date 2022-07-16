@@ -45,7 +45,7 @@ public class REM_1396_MessageFunctionality_StepDef {
 
 
         BrowserUtils.sleep(2);
-        messagePage.verifyMessageForAddMention.isDisplayed();
+        Assert.assertTrue(messagePage.verifyMessageForAddMention.isDisplayed());
 
     }
 
