@@ -14,7 +14,6 @@ public class MessagePage {
 
     }
 
-
     @FindBy (id = "feed-add-post-form-tab-message")
     public WebElement messageButton;
 
@@ -32,6 +31,5 @@ public class MessagePage {
 
     @FindBy (xpath = "(//div[@class='feed-item-wrap'])[1]")
     public WebElement verifyMessageForAddMention;
-
 
 }
