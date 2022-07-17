@@ -29,5 +29,10 @@ public class PollPage {
     @FindBy(xpath = "//span[@class = 'feed-add-post-destination-text']")
     public List<WebElement> destinationContainer;
 
+    @FindBy (xpath ="//a[.='Add question']")
+    public WebElement addQuestionButton;
+
+    @FindBy (xpath = "//input[@placeholder='Question ']")
+    public List<WebElement> questions;
 
 }

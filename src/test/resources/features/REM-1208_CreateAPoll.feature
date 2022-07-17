@@ -16,15 +16,21 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
 
   Background: user should be able to login home page.
     Given user can login the page
-@wip
-  Scenario: User can add users by selecting multiple contacts from Employees and Department's contact lists.
     When user click poll tab
+
+
+  Scenario: User can add users by selecting multiple contacts from Employees and Department's contact lists.
     And user click add more link and Employees and Department's tab on the pop-up
     And user select multiple contacts
       | hr39@cybertekschool.com       |
       | helpdesk22@cybertekschool.com |
-      | Yasinak                        |
+      | Yasinak                       |
     Then user displayed selected contacts in the To section
       | hr39@cybertekschool.com       |
       | helpdesk22@cybertekschool.com |
-      | Yasinak                        |
+      | Yasinak                       |
+
+  @wip
+    Scenario: User can add questions
+      And user click Add question button 2 times
+      Then user displayed 2 added question

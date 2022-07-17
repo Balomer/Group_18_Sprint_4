@@ -68,4 +68,24 @@ public class REM_1208_CreateAPoll_StepDefinitions {
         Assert.assertTrue(addedEmployees.containsAll(employeeNames));
 
     }
+
+    @And("user click Add question button {int} times")
+    public void userClickAddQuestionButtonTimes(int countOfQuestions) {
+
+        if (countOfQuestions >= 0) {
+            for (int i = 0; i <= countOfQuestions; i++) {
+                pollPage.addQuestionButton.click();
+            }
+
+        }
+    }
+
+    @Then("user displayed {int} added question")
+    public void userDisplayedAddedQuestion(int addedQuestions) {
+
+        if (addedQuestions >= 0) {
+            Assert.assertEquals(pollPage.questions.size(),addedQuestions + 1);
+
+        }
+    }
 }
