@@ -16,3 +16,13 @@ Feature: "Filter and search" functionality on Active Stream.
       | MY ACTIVITY   |
       | FAVORITES     |
       | WORK          |
+
+
+  @REM-1402
+  Scenario: User should be able to add and remove fields
+    When user clicks on the filter and search box
+    And user clicks on the add file module
+    And user clicks on the date field
+    Then the date input box is added
+    And user clicks on the delete icon
+    Then the date input box is removed

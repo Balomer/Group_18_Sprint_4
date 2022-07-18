@@ -3,6 +3,7 @@ package com.cydeo.step_definitions;
 import com.cydeo.pages.ActivityStreamPage;
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -57,8 +58,43 @@ public class REM_1210_FilterSearch_StepDefs {
 
     }
 
+    @When("user clicks on the add file module")
+    public void user_clicks_on_the_add_file_module() {
+
+        activityStreamPage.addField.click();
+
+    }
+    @When("user clicks on the date field")
+    public void user_clicks_on_the_date_field() {
+
+       activityStreamPage.dateField.click();
+    }
+
+    @Then("the date input box is added")
+    public void the_date_input_box_is_added() {
+
+        Assert.assertTrue(activityStreamPage.dateBox.isDisplayed());
+
+    }
+
+    @And("user clicks on the delete icon")
+    public void userClicksOnTheDeleteIcon() {
+
+        activityStreamPage.dateBoxDeleteIcon.click();
+    }
 
 
+    @Then("the date input box is removed")
+    public void theDateInputBoxIsRemoved() {
+
+    try{
+        Assert.assertFalse(activityStreamPage.dateBox.isDisplayed());
+    }catch (Exception e){
+        System.out.println("Stale reference element");
+    }
+
+    }
 
 
 }
+

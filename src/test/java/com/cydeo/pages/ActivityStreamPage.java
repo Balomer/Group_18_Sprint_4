@@ -39,6 +39,9 @@ public class ActivityStreamPage {
     @FindBy(xpath = "//div[@class='main-ui-control main-ui-select']")
     public WebElement dateBox;
 
+    @FindBy(xpath = "(//span[@title='Hide field'])[4]")
+    public WebElement dateBoxDeleteIcon;
+
 
 
 
