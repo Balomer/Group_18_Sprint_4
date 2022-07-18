@@ -30,7 +30,7 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
       | helpdesk22@cybertekschool.com |
       | Yasinak                       |
 
-  @wip
+
     Scenario: User can add questions
       And user click Add question button 2 times
       Then user displayed 2 added question
