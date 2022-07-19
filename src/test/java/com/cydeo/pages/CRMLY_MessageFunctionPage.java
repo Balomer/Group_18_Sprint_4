@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class REM_1394_MessageFunction {
-    public REM_1394_MessageFunction() {
+public class CRMLY_MessageFunctionPage {
+    public CRMLY_MessageFunctionPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
@@ -14,7 +14,7 @@ public class REM_1394_MessageFunction {
     public WebElement messageTab;
 
     @FindBy(xpath = "//button[@id='blog-submit-button-save']")
-    public WebElement senButton;
+    public WebElement sendButton;
 
 
 }
