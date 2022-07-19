@@ -36,7 +36,7 @@ Feature: As a user, I should be able to send messages by clicking on Message tab
     When user clicks message tab
     When user verify 'All employees' is selected as recipient by default
     And verify user can change the default recipient.
-@nev
+
   Scenario:
     When user clicks message tab
     And user clicks add more
@@ -45,7 +45,7 @@ Feature: As a user, I should be able to send messages by clicking on Message tab
     Then user selects from "Employees and departments"
     Then user can delete a recipient by clicking the cross sign at the selected recipient
 
-@nev
+
   Scenario:
     When user clicks message tab
     And user specifies a message title
