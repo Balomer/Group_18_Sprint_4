@@ -10,7 +10,6 @@ Feature: As a user, I should be able to upload files and pictures as messages.
     6. User should be able to allow a recipient to edit documents.
     7. User should be able to remove files and images at any time before sending.
     8. User should be able to rename the file before sending it.
-
   Description:
     Supported file formats .pdf, .txt, .jpeg, .gif, .png, .docx
 
