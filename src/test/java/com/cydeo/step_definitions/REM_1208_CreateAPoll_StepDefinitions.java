@@ -2,14 +2,21 @@ package com.cydeo.step_definitions;
 
 import com.cydeo.pages.LoginPage;
 import com.cydeo.pages.PollPage;
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
+import com.cydeo.utilities.PollUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +41,8 @@ public class REM_1208_CreateAPoll_StepDefinitions {
     public void user_click_poll_tab() {
         pollPage.pollTab.click();
 
+        BrowserUtils.waitFor(2);
+
     }
 
     @When("user click add more link and Employees and Department's tab on the pop-up")
@@ -44,20 +53,16 @@ public class REM_1208_CreateAPoll_StepDefinitions {
     }
 
 
-
+    List<String> arr = new ArrayList<>();
     @And("user select multiple contacts")
     public void userSelectMultipleContacts(List<String> employeeNames) {
-        for (WebElement employee : pollPage.employees) {
-            for (String each : employeeNames) {
-                if (employee.getText().equalsIgnoreCase(each)) {
-                    employee.click();
-                }
-            }
-        }
+        arr = employeeNames;
+        pollPage.deleteAllEmployeesButton.click();
+       PollUtils.selectEmployees(arr);
     }
 
     @Then("user displayed selected contacts in the To section")
-    public void userDisplayedSelectedContactsInTheToSection(List<String> employeeNames) {
+    public void userDisplayedSelectedContactsInTheToSection() {
 
        List<String> addedEmployees = new ArrayList<>();
 
@@ -65,27 +70,136 @@ public class REM_1208_CreateAPoll_StepDefinitions {
             addedEmployees.add(each.getText());
         }
 
-        Assert.assertTrue(addedEmployees.containsAll(employeeNames));
+        Assert.assertTrue(addedEmployees.containsAll(arr));
 
     }
-
+    int k = 0;
     @And("user click Add question button {int} times")
     public void userClickAddQuestionButtonTimes(int countOfQuestions) {
 
-        if (countOfQuestions >= 0) {
-            for (int i = 0; i <= countOfQuestions; i++) {
-                pollPage.addQuestionButton.click();
-            }
+      PollUtils.addQuestions(countOfQuestions);
+
+        k = countOfQuestions;
+
+
+    }
+
+
+    @Then("user displayed added question")
+    public void userDisplayedAddedQuestion() {
+
+        if (k >= 0) {
+            Assert.assertEquals(pollPage.questions.size(),k+1);
 
         }
     }
 
-    @Then("user displayed {int} added question")
-    public void userDisplayedAddedQuestion(int addedQuestions) {
 
-        if (addedQuestions >= 0) {
-            Assert.assertEquals(pollPage.questions.size(),addedQuestions + 1);
 
+    int actualAnswersCount;
+    int qN;
+    @And("user click last answer {int} times under the {int} question")
+    public void userClickLastAnswerTimesUnderTheQuestion(int answersNum, int questionNumber) {
+
+        actualAnswersCount = PollUtils.numberOfAnswerUnderQuestion(questionNumber) + answersNum;
+
+
+        PollUtils.addAnswer(answersNum, questionNumber);
+
+        qN = questionNumber;
+
+    }
+
+    @Then("user displayed added answer")
+    public void userDisplayedAddedAnswer() {
+
+       Assert.assertEquals(PollUtils.numberOfAnswerUnderQuestion(qN),actualAnswersCount+1);
+
+    }
+
+
+    int lastQuestionNumber;
+    @And("user click x mark near the {int} question")
+    public void userClickXMarkNearTheQuestion(int questionNumber) {
+
+        PollUtils.addQuestions(3);
+        PollUtils.addAnswer(2,2);
+
+        lastQuestionNumber = pollPage.questions.size();
+
+
+        PollUtils.deleteSelectedQuestion(questionNumber);
+
+
+    }
+
+    @Then("user can not displayed selected question")
+    public void userCanNotDisplayedSelectedQuestion() {
+
+        Assert.assertEquals(pollPage.questions.size(), lastQuestionNumber -1);
+
+    }
+
+    int lastNumberOfAnswer;
+    int selectedQuestion;
+
+    @And("user click x mark near the {int} answer under {int} question")
+    public void userClickXMarkNearTheAnswerUnderQuestion(int answerNumber, int questionNumber) {
+
+        lastNumberOfAnswer = PollUtils.numberOfAnswerUnderQuestion(questionNumber);
+
+        PollUtils.deleteAnswerUnderQuestion(answerNumber, questionNumber);
+
+        selectedQuestion = questionNumber;
+
+    }
+
+    @Then("user can not displayed selected answer")
+    public void userCanNotDisplayedSelectedAnswer() {
+        Assert.assertEquals(PollUtils.numberOfAnswerUnderQuestion(selectedQuestion), lastNumberOfAnswer -1);
+
+    }
+
+
+    @And("user enter texts {string} into text box, {string} into question box, {string} into answer one box, {string} into answer two box")
+    public void userEnterTextsIntoTextBoxIntoQuestionBoxIntoAnswerBoxIntoAnswerBox(String message, String question, String ans1, String ans2) {
+
+
+
+    Driver.getDriver().switchTo().frame(pollPage.iframe);
+    pollPage.messageBox.sendKeys(message);
+
+    Driver.getDriver().switchTo().parentFrame();
+
+    pollPage.questions.get(0).sendKeys(question);
+    pollPage.answers.get(0).sendKeys(ans1);
+    pollPage.answers.get(1).sendKeys(ans2);
+
+    pollPage.allowMultiChoice.click();
+
+    pollPage.sendButton.click();
+
+
+
+    BrowserUtils.waitFor(3);
+
+    }
+
+    @Then("attendee user can choice multiple options")
+    public void attendeeUserCanChoiceMultipleOptions() {
+
+        boolean actualResult = false;
+
+        for (WebElement choice : pollPage.selectableChoice) {
+            if (choice.isEnabled()) {
+                actualResult = true;
+            }else{
+                actualResult= false;
+                break;
+            }
         }
+
+        Assert.assertTrue(actualResult);
+
     }
 }

@@ -26,11 +26,28 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
       | helpdesk22@cybertekschool.com |
       | Yasinak                       |
     Then user displayed selected contacts in the To section
-      | hr39@cybertekschool.com       |
-      | helpdesk22@cybertekschool.com |
-      | Yasinak                       |
 
-  @wip
-    Scenario: User can add questions
-      And user click Add question button 2 times
-      Then user displayed 2 added question
+
+
+  Scenario: User can add questions and questions
+    And user click Add question button 2 times
+    Then user displayed added question
+    And user click last answer 2 times under the 2 question
+    Then user displayed added answer
+
+
+    Scenario: User can delete question and answers
+      And user click x mark near the 3 question
+      Then user can not displayed selected question
+      And user click x mark near the 2 answer under 2 question
+      Then user can not displayed selected answer
+
+
+      Scenario: User can provide multiple choice by selecting the Allow multiple choice checkbox
+        And user click add more link and Employees and Department's tab on the pop-up
+        And user select multiple contacts
+        |hr101@cybertekschool.com|
+        And user enter texts "This is a poll" into text box, "Question" into question box, "Answer 1" into answer one box, "Answer 2" into answer two box
+        Then attendee user can choice multiple options
+
+

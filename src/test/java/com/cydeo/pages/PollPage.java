@@ -29,10 +29,33 @@ public class PollPage {
     @FindBy(xpath = "//span[@class = 'feed-add-post-destination-text']")
     public List<WebElement> destinationContainer;
 
-    @FindBy (xpath ="//a[.='Add question']")
+    @FindBy(xpath = "//a[.='Add question']")
     public WebElement addQuestionButton;
 
-    @FindBy (xpath = "//input[@placeholder='Question ']")
+    @FindBy(xpath = "//input[@placeholder='Question ']")
     public List<WebElement> questions;
 
+    @FindBy(xpath = "//input[@class='vote-block-inp adda']")
+    public List<WebElement> answers;
+
+    @FindBy(xpath = "//span[@class='feed-add-post-del-but']")
+    public WebElement deleteAllEmployeesButton;
+
+    @FindBy (xpath = "//button[@id='blog-submit-button-save']")
+    public WebElement sendButton;
+
+    @FindBy (xpath = "//iframe[@class='bx-editor-iframe']")
+    public WebElement iframe;
+
+    @FindBy (xpath = "//body[@contenteditable='true']")
+    public WebElement messageBox;
+
+    @FindBy (xpath = " //span[@class='popup-window-close-icon']")
+    public WebElement empPopUpCloseButton;
+
+    @FindBy (xpath ="//span[@class=\"bx-vote-block-inp-substitute\"]")
+    public List<WebElement> selectableChoice;
+
+    @FindBy (xpath = "//input[@id=\"multi_0\"]")
+    public WebElement allowMultiChoice;
 }
