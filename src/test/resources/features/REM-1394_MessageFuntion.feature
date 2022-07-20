@@ -16,8 +16,9 @@ Feature: As a user, I should be able to send messages by clicking on Message tab
 
   Background:
     Given logged in successfully with valid credentials and is on home page
-
+@wip
   Scenario:
+    When user clicks message tab
     When user specifies a title
     And user specifies a recipient
     Then user is able to send the message

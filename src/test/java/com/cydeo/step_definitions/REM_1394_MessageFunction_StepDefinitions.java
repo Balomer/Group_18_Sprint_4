@@ -2,11 +2,17 @@ package com.cydeo.step_definitions;
 
 import com.cydeo.pages.CRMLY_MessageFunctionPage;
 import com.cydeo.pages.LoginPage;
+import com.cydeo.utilities.BrowserUtils;
+import com.cydeo.utilities.ConfigurationReader;
+import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class REM_1394_MessageFunction_StepDefinitions {
 
@@ -16,28 +22,41 @@ public class REM_1394_MessageFunction_StepDefinitions {
 
     @Given("logged in successfully with valid credentials and is on home page")
     public void logged_in_successfully_with_valid_credentials_and_is_on_home_page() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+        loginPage.username.sendKeys(ConfigurationReader.getProperty("loginUsername"));
+        loginPage.password.sendKeys(ConfigurationReader.getProperty("loginPassword"));
+        loginPage.login.click();
+    }
+
+    @When("user clicks message tab")
+    public void user_clicks_message_tab() {
+        messageFunctionPage.messageTab.click();
 
     }
 
     @When("user specifies a title")
     public void user_specifies_a_title() {
-
+//        WebDriverWait webDriverWait= new WebDriverWait(Driver.getDriver(),10);
+//        webDriverWait.until(ExpectedConditions.visibilityOf(messageFunctionPage.messageBody));
+        messageFunctionPage.messageBody.click();
+        messageFunctionPage.messageBody.sendKeys("Message Title Here");
     }
 
     @When("user specifies a recipient")
     public void user_specifies_a_recipient() {
-
+        messageFunctionPage.addMore.click();
+        messageFunctionPage.emailUsersFromAddMore.click();
+        for (WebElement eachRecipient : messageFunctionPage.toChooseFromEmailUsersFromAddMore) {
+            eachRecipient.click();
+        }
     }
 
     @Then("user is able to send the message")
     public void user_is_able_to_send_the_message() {
+        messageFunctionPage.sendButton.click();
 
     }
 
-    @When("user clicks message tab")
-    public void user_clicks_message_tab() {
-
-    }
 
     @When("user doesn't specify a message title and tries to send the message")
     public void user_doesnt_specify_a_message_title_and_tries_to_send_the_message() {
