@@ -35,3 +35,27 @@ Feature: As a user, I should be able to interact with employees on the posts.
     When User click own comment reply button
     And User writes "my own comment reply message" and click send button
     Then User should be able to make comments his own comments.
+
+    Scenario: 4. After making a comment user should be able to "view comment", "copy link", "edit",
+    "delete" and "create task" by clicking more
+      When User click more button under the his own comment.
+      And User click view comment.
+      Then User should be able to view his own comment.
+      When User click more button under the his own comment.
+      And User click copy link button.
+      Then User should be able to copy the link.
+      When User click more button under the his own comment.
+      And User click edit button.
+      And User writes "new " on the comment box and click send button.
+      Then User should be able to edit his comment.
+      When User click new more button under the his own comment.
+      And User click create task button.
+      Then User should be able to create task.
+      When User click new more button under the his own comment.
+      And User click delete button.
+      Then User should be able to delete his own comment.
+
+      Scenario: 5. User should be able to see the reviewers' names and visit their profiles by clicking
+      on reviewers' name
+
+

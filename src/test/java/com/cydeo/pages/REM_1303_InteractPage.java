@@ -62,6 +62,41 @@ public class REM_1303_InteractPage {
     @FindBy(xpath = "//div[text()=', my own comment reply message']")
     public WebElement ownCommentReplyMessage;
 
+    @FindBy(xpath = "//div[@class='feed-com-text-inner']//div[.='my own comment']/../../../../..//div[@class='feed-com-informers-bottom']/a[.='Reply']/following-sibling::a")
+    public WebElement moreButtonUnderTheComment;
+
+    @FindBy(xpath = "//span[.='View comment']")
+    public WebElement viewCommentButtonInsideTheMore;
+
+    @FindBy(xpath = "(//span[.='Copy link'])[3]")
+    public WebElement copyLinkButtonInsideTheMore;
+
+    @FindBy(xpath = "//span[.='Edit']")
+    public WebElement editButtonInsideTheMore;
+
+    @FindBy(xpath = "//span[.='Delete']")
+    public WebElement deleteButtonInsideTheMore;
+
+    @FindBy(xpath = "//span[.='Create task']")
+    public WebElement createTaskButtonInsideTheMore;
+
+    @FindBy(xpath = "//span[@id='pagetitle'][.='Conversations']")
+    public WebElement viewCommentPage;
+
+    @FindBy(xpath = "//span[@class='comment-menu-link-icon']")
+    public WebElement copyLinkIcon;
+
+    @FindBy(xpath = "//div[@class='feed-item-wrap']//div[@class='feed-com-text-inner-inner']//div[.='new my own comment']")
+    public WebElement edittedCommentDisplayed;
+
+    @FindBy(xpath = "//div//a[text()='new my own comment']")
+    public WebElement createdTask;
+
+    @FindBy(xpath = "//div[@class='feed-com-text-inner']//div[.='new my own comment']/../../../../..//div[@class='feed-com-informers-bottom']/a[.='Reply']/following-sibling::a")
+    public WebElement newMoreButtonUnderTheComment;
+
+    @FindBy(xpath = "//div[@class='feed-add-successfully']")
+    public WebElement deletedMessage;
 
 
 

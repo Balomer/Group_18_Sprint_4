@@ -10,17 +10,20 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
+
+import java.util.Objects;
 
 public class REM_1303_Interact_StepDefinitions {
 
-       /* @Given("User should be on the homepage")
+       @Given("User is on the homepage")
         public void userShouldBeOnTheHomepage() {
             LoginPage page=new LoginPage();
             Driver.getDriver().get(ConfigurationReader.getProperty("url"));
             page.username.sendKeys(ConfigurationReader.getProperty("loginUsername"));
             page.password.sendKeys(ConfigurationReader.getProperty("loginPassword"));
             page.login.click();
-        }*/
+        }
 
         REM_1303_InteractPage interact = new REM_1303_InteractPage();
 
@@ -85,6 +88,7 @@ public class REM_1303_Interact_StepDefinitions {
     }
     @Then("User should be able to make comments other reviewers' comments.")
     public void userShouldBeAbleToMakeCommentsOtherReviewersComments() {
+        BrowserUtils.sleep(1);
         Assert.assertTrue(interact.writtenCommentReply.isDisplayed());
     }
 
@@ -99,17 +103,94 @@ public class REM_1303_Interact_StepDefinitions {
     public void userShouldBeAbleToSeeLikeIconOnOwnTheComment() {
         Assert.assertTrue(interact.ownCommentLikeIcon.isDisplayed());
     }
-
     @When("User click own comment reply button")
     public void userClickOwnCommentReplyButton() {
         interact.ownCommentReplyButton.click();
     }
-
     @Then("User should be able to make comments his own comments.")
     public void userShouldBeAbleToMakeCommentsHisOwnComments() {
+        BrowserUtils.sleep(1);
         Assert.assertTrue(interact.ownCommentReplyMessage.isDisplayed());
     }
 
+
+
+    //FOURTH SCENARIO
+    @When("User click more button under the his own comment.")
+    public void userClickMoreButtonUnderTheHisOwnComment() {
+        interact.moreButtonUnderTheComment.click();
+    }
+    @And("User click view comment.")
+    public void userClickViewComment() {
+        interact.viewCommentButtonInsideTheMore.click();
+    }
+    @Then("User should be able to view his own comment.")
+    public void userShouldBeAbleToViewHisOwnComment() {
+        BrowserUtils.sleep(2);
+        Assert.assertTrue(interact.viewCommentPage.isDisplayed());
+        Driver.getDriver().navigate().back();
+        BrowserUtils.sleep(2);
+    }
+
+    @And("User click copy link button.")
+    public void userClickCopyLinkButton() {
+        BrowserUtils.sleep(1);
+        interact.copyLinkButtonInsideTheMore.click();
+    }
+    @Then("User should be able to copy the link.")
+    public void userShouldBeAbleToCopyTheLink() {
+        Assert.assertTrue(interact.copyLinkIcon.isDisplayed());
+        BrowserUtils.sleep(2);
+    }
+
+    @And("User click edit button.")
+    public void userClickEditButton() {
+        interact.editButtonInsideTheMore.click();
+    }
+    @And("User writes {string} on the comment box and click send button.")
+    public void userWritesOnTheCommentBoxAndClickSendButton(String string) {
+        Driver.getDriver().switchTo().frame(interact.commentIFrame);
+        interact.commentBox.sendKeys(string);
+        Driver.getDriver().switchTo().parentFrame();
+        BrowserUtils.sleep(2);
+        interact.commentSendButton.click();
+        BrowserUtils.sleep(2);
+    }
+    @Then("User should be able to edit his comment.")
+    public void userShouldBeAbleToEditHisComment() {
+        BrowserUtils.sleep(1);
+        Assert.assertTrue(interact.edittedCommentDisplayed.isDisplayed());
+    }
+
+    @When("User click new more button under the his own comment.")
+    public void userClickNewMoreButtonUnderTheHisOwnComment() {
+        interact.newMoreButtonUnderTheComment.click();
+    }
+    @And("User click create task button.")
+    public void userClickCreateTaskButton() {
+        BrowserUtils.sleep(1);
+        interact.createTaskButtonInsideTheMore.click();
+    }
+    @Then("User should be able to create task.")
+    public void userShouldBeAbleToCreateTask() {
+        BrowserUtils.sleep(4);
+        Driver.getDriver().navigate().refresh();
+        Assert.assertTrue(interact.createdTask.isDisplayed());
+    }
+
+    @And("User click delete button.")
+    public void userClickDeleteButton() {
+        BrowserUtils.sleep(1);
+        interact.deleteButtonInsideTheMore.click();
+        Alert alert = Driver.getDriver().switchTo().alert();
+        alert.accept();
+    }
+    @Then("User should be able to delete his own comment.")
+    public void userShouldBeAbleToDeleteHisOwnComment() {
+        BrowserUtils.sleep(2);
+        Assert.assertTrue(interact.deletedMessage.isDisplayed());
+
+    }
 
 
 }
