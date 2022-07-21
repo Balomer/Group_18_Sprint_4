@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
         glue = "com/cydeo/step_definitions",
         dryRun = false,
         publish = false,
-        tags = "@REM-1420"
+        tags = "@REM-1412"
 )
 public class CukesRunner {
 }
