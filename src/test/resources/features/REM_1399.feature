@@ -27,9 +27,9 @@ Feature: As a user, I should be able to assign tasks under Quick Navigate Menu
     When user click new task
     And user enter task name
     And user click add more button and enter mails
-      |hr60@cybertekschool.com|
-      |hr59@cybertekschool.com|
-      |hr58@cybertekschool.com|
+      |hr30@cybertekschool.com|
+      |hr39@cybertekschool.com|
+      |hr48@cybertekschool.com|
     And user click add task button
     And user click task name on the task list
     Then user should see all responsibles mails in the task
