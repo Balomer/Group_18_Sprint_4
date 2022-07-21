@@ -27,6 +27,20 @@ Feature: "Filter and search" functionality on Active Stream.
     And user clicks on the delete icon
     Then the date input box is removed
 
-    this is for testing
+  @REM-1423
+  Scenario: User should be able to search by specifying the Date
+    When user clicks on the filter and search box
+    And user clicks on the date input box
+    And user selects date
+    And user clicks on the search button
+    Then the selected date should be displayed on the filter and search box
+
+  @REM-1411
+  Scenario: User should be able to save the filter.
+    When user clicks on the filter and search box
+    And user clicks on the save filter module
+    And user enters filter "EMRE"
+    And user clicks on the save button
+    Then the provided filter name "EMRE" should be displayed under the filters
 
 
