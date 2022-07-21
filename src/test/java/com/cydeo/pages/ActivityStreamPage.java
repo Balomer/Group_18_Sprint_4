@@ -36,11 +36,33 @@ public class ActivityStreamPage {
     @FindBy(xpath = "(//div[@class='main-ui-select-inner-label'])[1]")
     public WebElement dateField;
 
+   // @FindBy(xpath = "//div[@class='main-ui-control main-ui-select']")
     @FindBy(xpath = "//div[@class='main-ui-control main-ui-select']")
     public WebElement dateBox;
 
     @FindBy(xpath = "(//span[@title='Hide field'])[4]")
     public WebElement dateBoxDeleteIcon;
+
+   // @FindBy(xpath = "//span[.='Yesterday']")
+   // @FindBy(xpath = "//div[@data-value='{\"NAME\":\"Yesterday\",\"VALUE\":\"YESTERDAY\"}']")
+    // public WebElement dateYesterday;
+
+    @FindBy(xpath = "//button[contains (text(), 'Search')]")
+    public WebElement searchButton;
+
+    @FindBy(xpath = "//div[@class='main-ui-filter-add-container']")
+    public WebElement saveFilterModule;
+
+    @FindBy(xpath = "//input[@class='main-ui-filter-sidebar-edit-control']")
+    public WebElement filterNameInputBox;
+
+    @FindBy(xpath = "//span[@class='ui-btn ui-btn-success main-ui-filter-field-button main-ui-filter-save']")
+    public WebElement saveButton;
+
+    @FindBy(xpath = "//div[@class='main-ui-control main-ui-multi-select']")
+    public WebElement typeInputBox;
+
+
 
 
 
