@@ -11,7 +11,7 @@ Feature: As a user, I should be able to interact with employees on the posts.
 
 
   Background: User should login with valid credentials and be on the homepage.
-    Given User should be on the homepage
+    Given User is on the homepage
 
   Scenario: 1. User should be able to make a comment, like, or unfollow other employees' posts.
     When After clicking comment button, user write a "comment" and click send button
