@@ -62,10 +62,17 @@ public class ActivityStreamPage {
     @FindBy(xpath = "//div[@class='main-ui-control main-ui-multi-select']")
     public WebElement typeInputBox;
 
+    @FindBy(xpath = "(//span[@class='main-ui-delete main-ui-filter-field-delete main-ui-item-icon'])[1]")
+    public WebElement fieldDeleteIcon;
 
+    @FindBy(xpath = "//span[.='Restore default fields']")
+    public WebElement restoreToDefaultFields;
 
+    @FindBy(xpath = "(//input[@class='main-ui-control main-ui-control-string main-ui-square-search-item'])[1]")
+    public WebElement authorInputBox;
 
-
+    @FindBy(xpath = "(//input[@class='main-ui-control main-ui-control-string main-ui-square-search-item'])[2]")
+    public WebElement toInputBox;
 
 
 

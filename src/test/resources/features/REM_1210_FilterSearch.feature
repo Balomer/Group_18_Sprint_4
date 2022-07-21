@@ -59,3 +59,10 @@ Feature: "Filter and search" functionality on Active Stream.
       |Posts|
       |Announcements|
 
+  @REM-1425
+  Scenario: User should be able to restore the default field
+    When user clicks on the filter and search box
+    And user deletes the date input box, type input box, author input box, to input box
+    And user clicks on the restore default fields
+    Then the default fields should be visible
+
