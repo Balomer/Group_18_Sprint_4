@@ -13,14 +13,14 @@ import org.junit.Assert;
 
 public class REM_1303_Interact_StepDefinitions {
 
-        @Given("User should be on the homepage")
+       /* @Given("User should be on the homepage")
         public void userShouldBeOnTheHomepage() {
             LoginPage page=new LoginPage();
             Driver.getDriver().get(ConfigurationReader.getProperty("url"));
             page.username.sendKeys(ConfigurationReader.getProperty("loginUsername"));
             page.password.sendKeys(ConfigurationReader.getProperty("loginPassword"));
             page.login.click();
-        }
+        }*/
 
         REM_1303_InteractPage interact = new REM_1303_InteractPage();
 
