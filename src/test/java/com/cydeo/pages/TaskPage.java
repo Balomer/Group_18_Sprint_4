@@ -54,20 +54,35 @@ public class TaskPage extends BasePage{
 
     @FindBy(xpath = "//input[@data-bx-id='datepicker-display']")
     public WebElement deadlineInputBox;
+    
+    
 
 
 
     @FindBy(xpath = " //span[.='Select']")
     public WebElement selectButton;
 
+    @FindBy(xpath = "//span[.='Time planning']")
+    public WebElement timePlanningButton;
+
+    @FindBy(xpath = "//span[contains(@data-bx-id, 'start')]//input[@class='task-options-inp']")
+    public WebElement timeStartInput;
+
+    @FindBy(xpath = "//input[@data-bx-id='dateplanmanager-duration']")
+    public WebElement timeDurationInput2;
+
+    @FindBy(xpath = "//span[@id='task-detail-deadline']")
+    public WebElement deadLineControl;
+
+    @FindBy(xpath = "//div[@class='task-iframe-sidebar']//div[.='Deadline:']")
+    public WebElement deadLineText;
 
 
+    @FindBy(xpath = "//a[.='Employees and departments']")
+    public WebElement employeesAndDepartmentButton;
 
-
-
-
-
-
+    @FindBy(xpath = "//div[.='Subtasks']")
+    public WebElement subtasksList;
 
 
 
@@ -79,7 +94,8 @@ public class TaskPage extends BasePage{
     public WebElement taskTitleHighPriority(String taskName){
         return Driver.getDriver().findElement(By.xpath("//tbody//td[3]//a[.='"+taskName+"']/..//span[@class='task-priority-high']"));}
 
-
+    public WebElement selectedMail(String mail){
+        return Driver.getDriver().findElement(By.xpath("//a//div[.='"+mail+"']"));}
 
 
 
