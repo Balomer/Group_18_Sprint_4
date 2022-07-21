@@ -59,6 +59,11 @@ public class ActivityStreamPage {
     @FindBy(xpath = "//span[@class='ui-btn ui-btn-success main-ui-filter-field-button main-ui-filter-save']")
     public WebElement saveButton;
 
+    @FindBy(xpath = "//div[@class='main-ui-control main-ui-multi-select']")
+    public WebElement typeInputBox;
+
+
+
 
 
 

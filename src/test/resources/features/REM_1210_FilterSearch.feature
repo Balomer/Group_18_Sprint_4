@@ -43,4 +43,19 @@ Feature: "Filter and search" functionality on Active Stream.
     And user clicks on the save button
     Then the provided filter name "EMRE" should be displayed under the filters
 
+  @REM-1424
+  Scenario: User should be able to search by selecting single or multiple types
+    When user clicks on the filter and search box
+    And user clicks on the type input box
+    And user selects single type as "Posts"
+    And user clicks on the search button
+    Then the selected type "Posts" should be displayed on the filter and search box
+    And user clicks on the type input box
+    And user selects multiple types as
+      |Posts|
+      |Announcements|
+    And user clicks on the search button
+    Then the selected types should be displayed on the filter and search box
+      |Posts|
+      |Announcements|
 

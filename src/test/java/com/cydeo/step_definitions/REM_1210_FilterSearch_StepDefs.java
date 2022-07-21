@@ -188,5 +188,52 @@ public class REM_1210_FilterSearch_StepDefs {
         Assert.assertTrue(actualDefaultFilters.contains(name));
 
     }
+
+    @And("user clicks on the type input box")
+    public void userClicksOnTheTypeInputBox() {
+
+        activityStreamPage.typeInputBox.click();
+    }
+
+    @And("user selects single type as {string}")
+    public void userSelectsSingleTypeAs(String type) {
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(activityStreamPage.typeInputBox).moveByOffset(45,45).click().perform();
+        BrowserUtils.sleep(2);
+    }
+
+    @Then("the selected type {string} should be displayed on the filter and search box")
+    public void theSelectedTypeShouldBeDisplayedOnTheFilterAndSearchBox(String type) {
+
+        WebElement filterMessage = Driver.getDriver().findElement(By.xpath("//div[@class='main-ui-square-item']"));
+        System.out.println(filterMessage.getText());
+        Assert.assertTrue(filterMessage.getText().contains(type));
+        BrowserUtils.sleep(2);
+    }
+
+    @And("user selects multiple types as")
+    public void userSelectsMultipleTypesAs() {
+        activityStreamPage.filterSearchBox.click();
+        WebElement resetButton = Driver.getDriver().findElement(By.xpath("//span[@class='ui-btn ui-btn-light-border main-ui-filter-field-button main-ui-filter-reset']"));
+        resetButton.click();
+        BrowserUtils.sleep(2);
+        activityStreamPage.filterSearchBox.click();
+        activityStreamPage.typeInputBox.click();
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(activityStreamPage.typeInputBox).moveByOffset(45,45).click().perform();
+        BrowserUtils.sleep(2);
+        actions.moveToElement(activityStreamPage.typeInputBox).moveByOffset(50,75).click().perform();
+    }
+
+    @Then("the selected types should be displayed on the filter and search box")
+    public void theSelectedTypesShouldBeDisplayedOnTheFilterAndSearchBox(List<String>types) {
+
+        List<String> actualDefaultFilters = BrowserUtils.getElementsText(activityStreamPage.filterModules);
+        System.out.println(actualDefaultFilters);
+        Assert.assertTrue(actualDefaultFilters.contains(types.get(0))
+                & actualDefaultFilters.contains(types.get(1)));
+
+    }
 }
 
