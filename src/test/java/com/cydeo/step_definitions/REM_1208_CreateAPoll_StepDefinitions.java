@@ -244,12 +244,38 @@ public class REM_1208_CreateAPoll_StepDefinitions {
 
     }
 
-    @Then("user displayed error message and can not send poll as only a text")
-    public void userDisplayedErrorMessageAndCanNotSendPollAsOnlyAText() {
+    @Then("user displayed {string} error message and can not send poll as only a text")
+    public void userDisplayedErrorMessageAndCanNotSendPollAsOnlyAText(String errorMessage) {
 
-        if (pollPage.lastPostUserName.getText().equals(ConfigurationReader.getProperty("loginUsername"))) {
-            Assert.assertEquals(pollPage.lastPost.getText(),postText);
+
+        if (pollPage.lastPost.getText().equals(postText)) {
+            System.out.println(errorMessage + " is not displayed.");
+            Assert.assertFalse(pollPage.lastPost.isDisplayed());
         }
 
+
+    }
+
+    @And("user enter texts {string} into text box, {string} into question box, {string} into answer one box, delete second answer")
+    public void userEnterTextsIntoTextBoxIntoQuestionBoxIntoAnswerOneBoxDeleteSecondAnswer(String message, String question, String ans1) {
+        Driver.getDriver().switchTo().frame(pollPage.iframe);
+        pollPage.messageBox.sendKeys(message);
+
+        Driver.getDriver().switchTo().parentFrame();
+
+        pollPage.questions.get(0).sendKeys(question);
+        pollPage.answers.get(0).sendKeys(ans1);
+
+        PollUtils.deleteAnswerUnderQuestion(2,1);
+
+    }
+
+    @Then("user displayed {string} error message and can not send poll with one answer")
+    public void userDisplayedErrorMessageAndCanNotSendPollWithOneAnswer(String errorMessage) {
+
+        if (pollPage.lastPost.getText().equals(postText)) {
+            System.out.println(errorMessage + " is not displayed.");
+            Assert.assertFalse(pollPage.lastPollMessage.isDisplayed());
+        }
     }
 }

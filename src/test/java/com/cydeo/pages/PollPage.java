@@ -14,7 +14,7 @@ public class PollPage {
 
     }
 
-    @FindBy(xpath = "//span[.=\"Poll\"]")
+    @FindBy(xpath = "//span[.='Poll']")
     public WebElement pollTab;
 
     @FindBy(xpath = "//a[.='Add more']")
@@ -68,4 +68,6 @@ public class PollPage {
     @FindBy (xpath = "(//a[@class='feed-post-user-name'])[1]")
     public WebElement lastPostUserName;
 
+    @FindBy (xpath = "(//div[@class='bx-vote-question-title'])[1]")
+    public WebElement lastPollMessage;
 }
