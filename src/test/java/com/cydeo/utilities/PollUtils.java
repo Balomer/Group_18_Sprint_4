@@ -49,9 +49,9 @@ public class PollUtils {
         if(questionNumber <= questions.size()){
 
 
-            actions.moveToElement(questions.get(questionNumber)).perform();
+            actions.moveToElement(questions.get(questionNumber -1)).perform();
 
-            questionsXMarks.get(questionNumber).click();
+            questionsXMarks.get(questionNumber-1).click();
 
         }
 

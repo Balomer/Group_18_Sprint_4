@@ -58,4 +58,14 @@ public class PollPage {
 
     @FindBy (xpath = "//input[@id=\"multi_0\"]")
     public WebElement allowMultiChoice;
+
+    @FindBy (xpath = "//span[@class=\"feed-add-info-text\"]")
+    public WebElement messageTitleErrorMessage;
+
+    @FindBy (xpath = "(//div[@class='feed-post-text-block'])[1]")
+    public WebElement lastPost;
+
+    @FindBy (xpath = "(//a[@class='feed-post-user-name'])[1]")
+    public WebElement lastPostUserName;
+
 }
