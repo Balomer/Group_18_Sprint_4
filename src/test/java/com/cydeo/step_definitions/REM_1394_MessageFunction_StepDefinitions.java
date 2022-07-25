@@ -16,16 +16,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class REM_1394_MessageFunction_StepDefinitions {
 
-
-    LoginPage loginPage = new LoginPage();
     CRMLY_MessageFunctionPage messageFunctionPage = new CRMLY_MessageFunctionPage();
 
     @Given("logged in successfully with valid credentials and is on home page")
     public void logged_in_successfully_with_valid_credentials_and_is_on_home_page() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-        loginPage.username.sendKeys(ConfigurationReader.getProperty("loginUsername"));
-        loginPage.password.sendKeys(ConfigurationReader.getProperty("loginPassword"));
-        loginPage.login.click();
+        LoginPage.login(ConfigurationReader.getProperty("loginUsername"));
     }
 
     @When("user clicks message tab")
