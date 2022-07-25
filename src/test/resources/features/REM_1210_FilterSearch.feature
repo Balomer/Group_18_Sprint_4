@@ -1,3 +1,4 @@
+@REM-1210
 Feature: "Filter and search" functionality on Active Stream.
   As a user, I should be able to use "Filter and search" functionality on Active Stream
 
@@ -50,6 +51,8 @@ Feature: "Filter and search" functionality on Active Stream.
     And user selects single type as "Posts"
     And user clicks on the search button
     Then the selected type "Posts" should be displayed on the filter and search box
+    And user deletes the "Posts"
+    When user clicks on the filter and search box
     And user clicks on the type input box
     And user selects multiple types as
       |Posts|
@@ -58,4 +61,25 @@ Feature: "Filter and search" functionality on Active Stream.
     Then the selected types should be displayed on the filter and search box
       |Posts|
       |Announcements|
+
+
+
+  @REM-1425
+  Scenario: User should be able to restore the default field
+    When user clicks on the filter and search box
+    And user deletes the date input box, type input box, author input box, to input box
+    And user clicks on the restore default fields
+    Then the default fields should be visible
+
+  @REM-1441
+  Scenario: User should be able to reset filters to default
+    When user clicks on the filter and search box
+    And user clicks on the date input box
+    And user selects date
+    And user clicks on the type input box
+    And user selects single type as "Posts"
+    And user clicks on the reset button
+    Then the default fields should be visible
+
+
 
