@@ -56,18 +56,18 @@ public class PollPage {
     @FindBy (xpath ="//span[@class=\"bx-vote-block-inp-substitute\"]")
     public List<WebElement> selectableChoice;
 
-    @FindBy (xpath = "//input[@id=\"multi_0\"]")
-    public WebElement allowMultiChoice;
+    @FindBy (xpath = "//label[@class='vote-checkbox-label']")
+    public List<WebElement> allowMultiChoice;
 
     @FindBy (xpath = "//span[@class=\"feed-add-info-text\"]")
     public WebElement messageTitleErrorMessage;
 
-    @FindBy (xpath = "(//div[@class='feed-post-text-block'])[1]")
+    @FindBy (xpath = "(//div[@class='feed-post-text-block-inner-inner'])[1]")
     public WebElement lastPost;
 
     @FindBy (xpath = "(//a[@class='feed-post-user-name'])[1]")
     public WebElement lastPostUserName;
 
-    @FindBy (xpath = "(//div[@class='bx-vote-question-title'])[1]")
+    @FindBy (xpath = "(//div[@class='bx-vote-container bx-vote-container-web'])[1]")
     public WebElement lastPollMessage;
 }

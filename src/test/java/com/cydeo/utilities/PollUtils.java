@@ -66,9 +66,9 @@ public class PollUtils {
 
 
         if(answerNumber<= answer.size() && questionNumber<= pollPage.questions.size()){
-            actions.moveToElement(answer.get(answerNumber)).perform();
+            actions.moveToElement(answer.get(answerNumber-1)).perform();
 
-            answersXMarks.get(answerNumber).click();
+            answersXMarks.get(answerNumber-1).click();
 
         }
 
@@ -89,9 +89,12 @@ public class PollUtils {
 
     public static void selectEmployees(List<String> employeeNames){
 
+        Actions actions = new Actions(Driver.getDriver());
+
         for (WebElement employee : pollPage.employees) {
             for (String each : employeeNames) {
                 if (employee.getText().equalsIgnoreCase(each)) {
+                    actions.moveToElement(employee).perform();
                     employee.click();
                 }
             }

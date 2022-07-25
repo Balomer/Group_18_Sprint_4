@@ -181,9 +181,9 @@ public class REM_1208_CreateAPoll_StepDefinitions {
 
     }
 
-    @And("user click Allow multiple choice checkbox")
-    public void userClickAllowMultipleChoiceCheckbox() {
-        pollPage.allowMultiChoice.click();
+    @And("user click {int} Allow multiple choice checkbox")
+    public void userClickAllowMultipleChoiceCheckbox(int numberAllowMulti) {
+        pollPage.allowMultiChoice.get(numberAllowMulti-1).click();
 
         pollPage.sendButton.click();
 
@@ -213,6 +213,7 @@ public class REM_1208_CreateAPoll_StepDefinitions {
     @And("user click Send button")
     public void userClickSendButton() {
         pollPage.sendButton.click();
+        BrowserUtils.sleep(5);
 
     }
 
@@ -256,6 +257,7 @@ public class REM_1208_CreateAPoll_StepDefinitions {
 
     }
 
+    String postText2;
     @And("user enter texts {string} into text box, {string} into question box, {string} into answer one box, delete second answer")
     public void userEnterTextsIntoTextBoxIntoQuestionBoxIntoAnswerOneBoxDeleteSecondAnswer(String message, String question, String ans1) {
         Driver.getDriver().switchTo().frame(pollPage.iframe);
@@ -268,14 +270,19 @@ public class REM_1208_CreateAPoll_StepDefinitions {
 
         PollUtils.deleteAnswerUnderQuestion(2,1);
 
+        postText2 = message;
+
     }
+
 
     @Then("user displayed {string} error message and can not send poll with one answer")
     public void userDisplayedErrorMessageAndCanNotSendPollWithOneAnswer(String errorMessage) {
 
-        if (pollPage.lastPost.getText().equals(postText)) {
+        if (pollPage.lastPost.getText().equalsIgnoreCase(postText2)) {
             System.out.println(errorMessage + " is not displayed.");
             Assert.assertFalse(pollPage.lastPollMessage.isDisplayed());
         }
+
+
     }
 }
