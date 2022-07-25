@@ -51,7 +51,7 @@ public class REM_1399_StepDefs{
                 Assert.assertTrue(taskPage.taskTitleHighPriority(taskName).isDisplayed());
         }
 
-           // List<String> expectedMails = new ArrayList<>();
+            List<String> expectedMails = new ArrayList<>();
         @And("user click add more button and enter mails")
         public void userClickAddMoreButtonAndEnterMails(List<String> mails ) {
                 taskPage.addMoreButton.click();
@@ -60,8 +60,8 @@ public class REM_1399_StepDefs{
                        BrowserUtils.waitForClickablility(taskPage.selectedMail(mail),10);
                        taskPage.selectedMail(mail).click();
                 }
-               // expectedMails.addAll(mails);
 
+                expectedMails.addAll(mails);
         }
 
 
@@ -76,7 +76,8 @@ public class REM_1399_StepDefs{
         public void userShouldSeeAllResponsiblesInTheTask() {
                 Driver.getDriver().switchTo().frame(3);
                 BrowserUtils.waitForVisibility(taskPage.subtasksList, 10);
-                // List<String> actualMails = BrowserUtils.getElementsText(taskPage.responsibleEmails);
+                List<String> actualMails = BrowserUtils.getElementsText(taskPage.responsibleEmails);
+                Assert.assertEquals(expectedMails, actualMails);
                 Assert.assertTrue(taskPage.subtasksList.isDisplayed());
         }
 
