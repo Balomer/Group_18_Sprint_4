@@ -16,12 +16,20 @@ Feature: As a user, I should be able to send messages by clicking on Message tab
 
   Background:
     Given logged in successfully with valid credentials and is on home page
-@wip
+  @nev
   Scenario:
     When user clicks message tab
     When user specifies a title
     And user specifies a recipient
     Then user is able to send the message
+
+  Scenario:
+    When user clicks message tab
+    And user clicks open topic box  tab if not seen
+    When user specifies a statement in the topic box
+    And user is able to send the message
+    Then user verifies that "The message title is not specified" error message is given
+
 
   Scenario:
     When user clicks message tab
@@ -53,4 +61,13 @@ Feature: As a user, I should be able to send messages by clicking on Message tab
     And user specifies a message title
     And user specifies a recipient
     Then user closes recipient select window
-    When user cancel sending messages at any time before sending by clicking cancel button
+    Then user cancel sending messages at any time before sending by clicking cancel button
+
+    Scenario:
+      When user clicks message tab
+      And user specifies a message title
+      And user specifies a recipient
+      Then user closes recipient select window
+      Then user cancel sending messages at any time before sending by clicking cancel button
+      And user clicks message tab
+      Then verify the message box is fresh without any previous notes
