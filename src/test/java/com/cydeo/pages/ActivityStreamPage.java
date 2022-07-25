@@ -59,7 +59,7 @@ public class ActivityStreamPage {
     @FindBy(xpath = "//span[@class='ui-btn ui-btn-success main-ui-filter-field-button main-ui-filter-save']")
     public WebElement saveButton;
 
-    @FindBy(xpath = "//div[@class='main-ui-control main-ui-multi-select']")
+    @FindBy(xpath = "(//div[@data-name='EVENT_ID'])[2]")
     public WebElement typeInputBox;
 
     @FindBy(xpath = "(//span[@class='main-ui-delete main-ui-filter-field-delete main-ui-item-icon'])[1]")
@@ -74,6 +74,11 @@ public class ActivityStreamPage {
     @FindBy(xpath = "(//input[@class='main-ui-control main-ui-control-string main-ui-square-search-item'])[2]")
     public WebElement toInputBox;
 
+    @FindBy(xpath = "//span[@class='ui-btn ui-btn-light-border main-ui-filter-field-button main-ui-filter-reset']")
+    public WebElement resetButton;
+
+    @FindBy(xpath = "(//span[@class='main-ui-item-icon main-ui-delete'])[1]")
+    public WebElement filterSearchDeleteIcon;
 
 
 
