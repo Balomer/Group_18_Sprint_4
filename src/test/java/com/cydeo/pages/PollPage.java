@@ -70,4 +70,5 @@ public class PollPage {
 
     @FindBy (xpath = "(//div[@class='bx-vote-container bx-vote-container-web'])[1]")
     public WebElement lastPollMessage;
+
 }
