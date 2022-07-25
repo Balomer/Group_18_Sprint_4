@@ -1,8 +1,9 @@
+@fatih
 Feature: As a user, I should be able to interact with employees on the posts.
 
   1. User should be able to make a comment, like, or unfollow other employees' posts.
   2. User should be able to like, or make comments on all other reviewers' comments.
-  3. User should be able to like and replay his/her own comment.
+  3. User should be able to like and reply his/her own comment.
   4. After making a comment user should be able to "view comment", "copy link", "edit",
      "delete" and "create task" by clicking more
   5. User should be able to see the reviewers' names and visit their profiles by clicking
@@ -11,7 +12,7 @@ Feature: As a user, I should be able to interact with employees on the posts.
 
 
   Background: User should login with valid credentials and be on the homepage.
-    Given User is on the homepage
+    Given User is successfully on the homepage
 
   Scenario: 1. User should be able to make a comment, like, or unfollow other employees' posts.
     When After clicking comment button, user write a "comment" and click send button
@@ -57,5 +58,11 @@ Feature: As a user, I should be able to interact with employees on the posts.
 
       Scenario: 5. User should be able to see the reviewers' names and visit their profiles by clicking
       on reviewers' name
+        When User click reviewers' button
+        And User click reviewers' name
+        Then User should be able to see reviewers' profile
 
+      Scenario: 6. User should be able to add others' posts to favorites by clicking on the Star icon.
+        When User click star icon
+        Then User should be able to add others' posts to favorites
 
