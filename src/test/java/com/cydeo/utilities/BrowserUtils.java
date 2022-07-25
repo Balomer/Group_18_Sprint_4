@@ -500,6 +500,7 @@ for given duration
     }
     public static void stopRecording() throws Exception
     {
+
         screenRecorder.stop();
     }
 
