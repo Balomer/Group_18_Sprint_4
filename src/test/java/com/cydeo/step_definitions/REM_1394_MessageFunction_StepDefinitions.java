@@ -34,6 +34,23 @@ public class REM_1394_MessageFunction_StepDefinitions {
 
     }
 
+    @And("user clicks open topic box  tab if not seen")
+    public void userClicksOpenTopicBoxTabIfNotSeen() {
+       if (!(messageFunctionPage.topicBody.isEnabled())){
+           messageFunctionPage.openTopicBoxTab.click();
+       }
+    }
+
+    @When("user specifies a statement in the topic box")
+    public void userSpecifiesAStatementInTheTopicBox() {
+        messageFunctionPage.topicBody.sendKeys("Topic Here");
+    }
+    @Then("user verifies that {string} error message is given")
+    public void userVerifiesThatErrorMessageIsGiven(String string) {
+                Assert.assertEquals(string,messageFunctionPage.topicBoxErrorMessage.getText());
+
+    }
+
     @When("user specifies a title")
     public void user_specifies_a_title() {
 //        WebDriverWait webDriverWait= new WebDriverWait(Driver.getDriver(),10);
@@ -48,9 +65,13 @@ public class REM_1394_MessageFunction_StepDefinitions {
     @When("user specifies a recipient")
     public void user_specifies_a_recipient() {
         messageFunctionPage.addMore.click();
-        messageFunctionPage.emailUsersFromAddMore.click();
-        for (WebElement eachRecipient : messageFunctionPage.toChooseFromEmailUsersFromAddMore) {
+        messageFunctionPage.addRecentSign.click();
+        /*for (WebElement eachRecipient : messageFunctionPage.toChooseFromEmailUsersFromAddMore) {
             eachRecipient.click();
+        }*/
+        for (WebElement recentRecipient : messageFunctionPage.addFromRecent) {
+            recentRecipient.click();
+            break;
         }
     }
 
@@ -98,6 +119,11 @@ public class REM_1394_MessageFunction_StepDefinitions {
         Assert.assertFalse(messageFunctionPage.allEmployeesAsDefault.isDisplayed());
         messageFunctionPage.addMore.click();
         messageFunctionPage.addPeople.click();
+        messageFunctionPage.addRecentSign.click();
+        for (WebElement recentRecipient : messageFunctionPage.addFromRecent) {
+            recentRecipient.click();
+            break;
+        }
         //verify that new recipient is added
 
 
@@ -112,8 +138,8 @@ public class REM_1394_MessageFunction_StepDefinitions {
     @And("user selects from Recent")
     public void userSelectsFromRecent() {
         messageFunctionPage.addRecentSign.click();
-        for (WebElement recentrecipient : messageFunctionPage.addFromRecent) {
-            recentrecipient.click();
+        for (WebElement recentRecipient : messageFunctionPage.addFromRecent) {
+            recentRecipient.click();
             break;
         }
 
@@ -160,8 +186,17 @@ public class REM_1394_MessageFunction_StepDefinitions {
 
     @When("user cancel sending messages at any time before sending by clicking cancel button")
     public void user_cancel_sending_messages_at_any_time_before_sending_by_clicking_cancel_button() {
+        Assert.assertTrue(messageFunctionPage.cancelMessageButton.isEnabled());
         messageFunctionPage.cancelMessageButton.click();
+        Assert.assertTrue(!(messageFunctionPage.cancelMessageButton.isEnabled()));
+
     }
 
 
+    @Then("verify the message box is fresh without any previous notes")
+    public void verifyTheMessageBoxIsFreshWithoutAnyPreviousNotes() {
+        Driver.getDriver().switchTo().frame(messageFunctionPage.iframe);
+        Assert.assertTrue(messageFunctionPage.messageBody.getText().isEmpty());
+
+    }
 }
