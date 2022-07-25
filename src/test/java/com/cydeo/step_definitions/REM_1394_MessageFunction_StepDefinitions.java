@@ -121,6 +121,7 @@ public class REM_1394_MessageFunction_StepDefinitions {
         messageFunctionPage.addPeople.click();
         messageFunctionPage.addRecentSign.click();
         for (WebElement recentRecipient : messageFunctionPage.addFromRecent) {
+            Assert.assertTrue(recentRecipient.isEnabled());
             recentRecipient.click();
             break;
         }
