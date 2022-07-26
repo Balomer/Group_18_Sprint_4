@@ -25,8 +25,8 @@ public class LoginPage {
         LoginPage page=new LoginPage();
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
         Actions actions=new Actions(Driver.getDriver());
-        page.username.click();
-        actions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.DELETE).perform();
+        page.username.clear();
+        //actions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.DELETE).perform();
         page.username.sendKeys(username);
         page.password.sendKeys(ConfigurationReader.getProperty("loginPassword"));
         page.login.click();

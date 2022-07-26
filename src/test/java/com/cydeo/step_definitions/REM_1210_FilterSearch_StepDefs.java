@@ -134,6 +134,7 @@ public class REM_1210_FilterSearch_StepDefs {
         actions.moveByOffset(1830,365).click().perform();
         Driver.getDriver().findElement(By.xpath("//button[@class='ui-btn ui-btn-primary ui-btn-icon-search main-ui-filter-field-button  main-ui-filter-find']")).click();*/
 
+
         Actions actions = new Actions(Driver.getDriver());
         WebElement anyDate = Driver.getDriver().findElement(By.xpath("//span[.='Any date']"));
         BrowserUtils.sleep(2);
@@ -203,6 +204,7 @@ public class REM_1210_FilterSearch_StepDefs {
     @And("user selects single type as {string}")
     public void userSelectsSingleTypeAs(String type) {
 
+        //Driver.getDriver().findElement(By.xpath("(//div[.='Conversations'])[2]")).click();
         Actions actions = new Actions(Driver.getDriver());
         //WebElement typeEmptybox = Driver.getDriver().findElement(By.xpath("//span[@class='main-ui-square-container']"));
         //BrowserUtils.sleep(2);

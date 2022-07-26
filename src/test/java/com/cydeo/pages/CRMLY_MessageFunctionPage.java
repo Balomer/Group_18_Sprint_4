@@ -27,7 +27,7 @@ public class CRMLY_MessageFunctionPage {
     @FindBy(id = "id='blg-post-img-1107")
     public WebElement messageSent;
 
-    @FindBy(id = "feed-add-post-destination-input")
+    @FindBy(id = "bx-destination-tag")
     public WebElement addMore;
 
     @FindBy(id = "destEmailTab_destination4682335")
