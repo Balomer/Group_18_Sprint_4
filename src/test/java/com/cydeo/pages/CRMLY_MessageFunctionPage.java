@@ -24,14 +24,30 @@ public class CRMLY_MessageFunctionPage {
     @FindBy(xpath = "//body[@style='min-height: 184px;']")
     public WebElement messageBody;
 
+    @FindBy(id = "POST_TITLE")
+    public WebElement topicBody;
+
+    @FindBy(id = "lhe_button_title_blogPostForm")
+    public WebElement openTopicBoxTab;
+
+    @FindBy(xpath = "//span[.='The message text is empty.']")
+    public WebElement topicBoxErrorMessage;
+
     @FindBy(id = "id='blg-post-img-1107")
     public WebElement messageSent;
 
     @FindBy(id = "bx-destination-tag")
     public WebElement addMore;
 
+   /*
     @FindBy(id = "destEmailTab_destination4682335")
-    public WebElement emailUsersFromAddMore;
+    public WebElement emailUsersFromAddMore; */
+
+   /*
+    @FindBy(id = "destEmailTab_destination9153941")
+    public WebElement emailUsersFromAddMore;*/
+
+
 
     @FindBy(xpath="//div[.='All employees']")
     public List<WebElement> toChooseFromEmailUsersFromAddMore;
@@ -48,20 +64,19 @@ public class CRMLY_MessageFunctionPage {
     @FindBy(xpath="//a[@id='bx-destination-tag']")
     public WebElement addPeople;
 
-    @FindBy(id="destLastTab_destination0913864")
+    @FindBy(xpath = "//a[starts-with(@id,'destLastTab_destination')]")
     public WebElement addRecentSign;
 
     @FindBy(xpath = "//div[@class='bx-finder-box-item-t7-name']")
     public List<WebElement> addFromRecent;
 
-
-    @FindBy(id="destGroupTab_destination4055975")
+    @FindBy(xpath = "//a[starts-with(@id,'destGroupTab_destination')]")
     public WebElement addMyGroupsSign;
 
     @FindBy(xpath = "//div[@class='bx-finder-box-item-t7-name']")
     public WebElement addFromMyGroups;
 
-    @FindBy(id= "destDepartmentTab_destination0913864")
+    @FindBy(xpath = "//a[starts-with(@id,'destDepartmentTab_destination')]")
     public WebElement addEmployeesAndDepartmentsSign;
 
     @FindBy(xpath = "//div[@class='bx-finder-company-department-text']")

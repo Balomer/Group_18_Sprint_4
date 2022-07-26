@@ -11,12 +11,17 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class REM_1303_Interact_StepDefinitions {
 
+
     REM_1303_InteractPage interact = new REM_1303_InteractPage();
+
+
 
     //FIRST SCENARIO
     @When("After clicking comment button, user write a {string} and click send button")
@@ -184,4 +189,41 @@ public class REM_1303_Interact_StepDefinitions {
     }
 
 
+    //FIFTH SCENARIO
+    @When("User click reviewers' button")
+    public void userClickReviewersButton() {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(interact.reviewersButton).perform();
+        BrowserUtils.sleep(2);
+    }
+    @And("User click reviewers' name")
+    public void userClickReviewersName() {
+        interact.reviewersName.click();
+    }
+    @Then("User should be able to see reviewers' profile")
+    public void userShouldBeAbleToSeeReviewersProfile() {
+        Set<String> list = Driver.getDriver().getWindowHandles();
+        for(String each : list ){
+            Driver.getDriver().switchTo().window(each);
+            if(Driver.getDriver().getTitle().contains("cybertekschool.com")){
+                break;
+            }
+        }
+        Assert.assertTrue(interact.reviewersPage.isDisplayed());
+        BrowserUtils.sleep(2);
+    }
+
+    //SIXTH SCENARIO
+    @When("User click star icon")
+    public void userClickStarIcon() {
+        //Actions actions = new Actions(Driver.getDriver());
+        BrowserUtils.sleep(4);
+        //actions.moveToElement(interact.addToFavorites).click().perform();
+        interact.addToFavorites.click();
+        BrowserUtils.sleep(2);
+    }
+    @Then("User should be able to add others' posts to favorites")
+    public void userShouldBeAbleToAddOthersPostsToFavorites() {
+        Assert.assertTrue(interact.verifyAddedToFavorites.isDisplayed());
+    }
 }

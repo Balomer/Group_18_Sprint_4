@@ -98,6 +98,23 @@ public class REM_1303_InteractPage {
     @FindBy(xpath = "//div[@class='feed-add-successfully']")
     public WebElement deletedMessage;
 
+    @FindBy(xpath = "//span[@class='feed-content-view-cnt']")
+    public WebElement reviewersButton;
+
+    @FindBy(xpath = "//span[@class='bx-contentview-popup-name-new']")
+    public WebElement reviewersName;
+
+    @FindBy(xpath = "//td[@class='user-profile-block-title'][.='General information']")
+    public WebElement reviewersPage;
+
+    @FindBy(xpath = "//div[starts-with(@id,'log_entry_favorites')]")
+    public WebElement addToFavorites;
+
+    @FindBy(xpath = "//div[@title='Remove from favorites']")
+    public WebElement verifyAddedToFavorites;
+
+
+
 
 
 }
