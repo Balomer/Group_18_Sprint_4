@@ -18,16 +18,10 @@ import java.util.Set;
 
 public class REM_1303_Interact_StepDefinitions {
 
-       @Given("User is successfully on the homepage")
-        public void userShouldBeOnTheHomepage() {
-            LoginPage page=new LoginPage();
-            Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-            page.username.sendKeys(ConfigurationReader.getProperty("loginUsername"));
-            page.password.sendKeys(ConfigurationReader.getProperty("loginPassword"));
-            page.login.click();
-        }
 
-        REM_1303_InteractPage interact = new REM_1303_InteractPage();
+    REM_1303_InteractPage interact = new REM_1303_InteractPage();
+
+
 
     //FIRST SCENARIO
     @When("After clicking comment button, user write a {string} and click send button")

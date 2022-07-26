@@ -10,6 +10,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.hamcrest.MatcherAssert;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -27,6 +28,7 @@ import java.time.Duration;
 import java.util.*;
 import java.util.List;
 
+import static javax.swing.text.html.HTML.Attribute.VALUE;
 import static org.junit.Assert.*;
 
 public class REM_1395_Upload_StepDefinitions {
@@ -88,13 +90,13 @@ public class REM_1395_Upload_StepDefinitions {
         filePath2=System.getProperty("user.dir")+"/src/test/resources/testData/testData.txt";
         filePath3=System.getProperty("user.dir")+"/src/test/resources/testData/test2.docx";
         page.uploadFilesAndImagesBox.sendKeys(filePath1);
-        BrowserUtils.sleep(1);
+
         //wait.until(ExpectedConditions.visibilityOf(page.insertButton1));
         page.uploadFilesAndImagesBox.sendKeys(filePath2);
-        BrowserUtils.sleep(1);
+
         //wait.until(ExpectedConditions.visibilityOf(page.insertButton2));
         page.uploadFilesAndImagesBox.sendKeys(filePath3);
-        BrowserUtils.sleep(1);
+        BrowserUtils.sleep(3);
         //wait.until(ExpectedConditions.visibilityOf(page.insertButton3));
 
     }
@@ -108,7 +110,7 @@ public class REM_1395_Upload_StepDefinitions {
 
     @Then("User should see the uploaded image itself in the related message")
     public void userShouldSeeTheUploadedImageItselfInTheRelatedMessage() {
-        BrowserUtils.sleep(1);
+        BrowserUtils.sleep(3);
         assertTrue(page.img(filePath1).isDisplayed());
     }
 
@@ -202,7 +204,7 @@ public class REM_1395_Upload_StepDefinitions {
     public void userShouldSeeNewNameOfTheUploadedFileInTheRelatedMessage() {
             String actualResult=page.newName(newName).getText();
             assertEquals(newName,actualResult.substring(0,actualResult.lastIndexOf(".")));
-    }
-
-
+   }
 }
+
+

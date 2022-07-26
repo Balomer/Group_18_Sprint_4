@@ -25,6 +25,7 @@ public class UploadPage extends BasePage {
     @FindBy(id = "blog-submit-button-save")
     public WebElement sendButton;
 
+
     @FindBy(css = ".feed-add-post-loading")
     public WebElement loadingBar;
 
