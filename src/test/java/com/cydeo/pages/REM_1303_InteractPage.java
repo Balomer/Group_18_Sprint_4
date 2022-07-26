@@ -98,6 +98,8 @@ public class REM_1303_InteractPage {
     @FindBy(xpath = "//div[@class='feed-add-successfully']")
     public WebElement deletedMessage;
 
+
+
     @FindBy(xpath = "//span[@class='feed-content-view-cnt']")
     public WebElement reviewersButton;
 
@@ -112,7 +114,6 @@ public class REM_1303_InteractPage {
 
     @FindBy(xpath = "//div[@title='Remove from favorites']")
     public WebElement verifyAddedToFavorites;
-
 
 
 
