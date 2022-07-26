@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class REM_1394_MessageFunction_StepDefinitions {
 
     CRMLY_MessageFunctionPage messageFunctionPage = new CRMLY_MessageFunctionPage();
+    //String sampleMessageTitle;
 
     @Given("logged in successfully with valid credentials and is on home page")
     public void logged_in_successfully_with_valid_credentials_and_is_on_home_page() {
@@ -52,6 +53,7 @@ public class REM_1394_MessageFunction_StepDefinitions {
 //        webDriverWait.until(ExpectedConditions.visibilityOf(messageFunctionPage.messageBody));
 
         Driver.getDriver().switchTo().frame(messageFunctionPage.iframe);
+       // sampleMessageTitle="Message Title Here";
         messageFunctionPage.messageBody.sendKeys("Message Title Here");
         Driver.getDriver().switchTo().parentFrame();
 
@@ -102,24 +104,32 @@ public class REM_1394_MessageFunction_StepDefinitions {
     }
 
     @When("user verify {string} is selected as recipient by default")
-    public void userVerifyAllEmployeesIsSelectedAsRecipientByDefault() {
-        Assert.assertTrue(messageFunctionPage.allEmployeesAsDefault.isEnabled());
+    public void userVerifyAllEmployeesIsSelectedAsRecipientByDefault(String string) {
+        Assert.assertEquals(string,messageFunctionPage.allEmployeesAsDefault.getText());
+        System.out.println(messageFunctionPage.allEmployeesAsDefault.getText());
 
     }
 
     @And("verify user can change the default recipient.")
     public void verifyUserCanChangeTheDefaultRecipient() {
 
-        messageFunctionPage.allEmployeesAsDefault.click();
-        Assert.assertFalse(messageFunctionPage.allEmployeesAsDefault.isDisplayed());
-        messageFunctionPage.addMore.click();
+        messageFunctionPage.allEmployeesAsDefaultDeleteButton.click();
+        //Assert.assertFalse(messageFunctionPage.allEmployeesAsDefault.isDisplayed());
+        //messageFunctionPage.addMore.click();
         messageFunctionPage.addPeople.click();
-        messageFunctionPage.addRecentSign.click();
-        for (WebElement recentRecipient : messageFunctionPage.addFromRecent) {
-            Assert.assertTrue(recentRecipient.isEnabled());
-            recentRecipient.click();
-            break;
+        //messageFunctionPage.addRecentSign.click();
+        if (messageFunctionPage.addFromRecent.isEmpty()){
+            messageFunctionPage.addFromMyGroups.click();
+            System.out.println(messageFunctionPage.allEmployeesAsDefault.getText()+" is SELECTED Again");
         }
+        for (WebElement recentRecipient : messageFunctionPage.addFromRecent) {
+            Assert.assertTrue(recentRecipient.isDisplayed());
+            recentRecipient.click();
+            BrowserUtils.sleep(3);
+            //break;
+        }
+        messageFunctionPage.recipientSelectCloseIcon.click();
+       // BrowserUtils.sleep(2);
         //verify that new recipient is added
 
 

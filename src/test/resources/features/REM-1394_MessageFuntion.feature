@@ -43,7 +43,7 @@ Feature: As a user, I should be able to send messages by clicking on Message tab
 
   Scenario:
     When user clicks message tab
-    When user verify 'All employees' is selected as recipient by default
+    When user verify "All employees" is selected as recipient by default
     And verify user can change the default recipient.
 
   Scenario:

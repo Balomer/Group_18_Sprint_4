@@ -12,6 +12,7 @@ public class CRMLY_MessageFunctionPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+
     @FindBy(xpath = "//span[.='Message']")
     public WebElement messageTab;
 
@@ -33,7 +34,7 @@ public class CRMLY_MessageFunctionPage {
     @FindBy(xpath = "//span[.='The message text is empty.']")
     public WebElement topicBoxErrorMessage;
 
-    @FindBy(id = "id='blg-post-img-1107")
+    @FindBy(xpath = "//div[starts-with(@id, 'blog_post_body')][.='Message Title Here']")
     public WebElement messageSent;
 
     @FindBy(id = "bx-destination-tag")
@@ -58,16 +59,19 @@ public class CRMLY_MessageFunctionPage {
     @FindBy(xpath="//span[.='Please specify at least one person.']")
     public WebElement recipientAbcentErrorMessage;
 
-    @FindBy(xpath="//span[@class='feed-add-post-destination feed-add-post-destination-all-users']")
+    @FindBy(xpath="//span[@class='feed-add-post-destination-text']")
     public WebElement allEmployeesAsDefault;
 
-    @FindBy(xpath="//a[@id='bx-destination-tag']")
+    @FindBy(xpath="//span[@class='feed-add-post-del-but']")
+    public WebElement allEmployeesAsDefaultDeleteButton;
+
+    @FindBy(xpath="//a[contains(text(),'Add persons, groups or department')]")
     public WebElement addPeople;
 
     @FindBy(xpath = "//a[starts-with(@id,'destLastTab_destination')]")
     public WebElement addRecentSign;
 
-    @FindBy(xpath = "//div[@class='bx-finder-box-item-t7-name']")
+    @FindBy(xpath = "//div[contains(text(),'@cybertekschool.com')] ")
     public List<WebElement> addFromRecent;
 
     @FindBy(xpath = "//a[starts-with(@id,'destGroupTab_destination')]")
